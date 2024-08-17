@@ -1,0 +1,74 @@
+CREATE TABLE Books (
+    book_id INT PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(255),
+    author VARCHAR(255),
+    genre VARCHAR(100),
+    publication_date DATE,
+    ISBN VARCHAR(20),
+    quantity_available INT
+);
+
+
+CREATE TABLE Users (
+    user_id INT PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(100),
+    password VARCHAR(255), -- Assuming the hashed password will be stored as a string
+    email VARCHAR(255),
+    role ENUM('admin', 'librarian', 'patron')
+);
+
+
+CREATE TABLE Loans (
+    loan_id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT,
+    book_id INT,
+    loan_date DATE,
+    return_date DATE,
+    status ENUM('borrowed', 'returned'),
+    FOREIGN KEY (user_id) REFERENCES Users(user_id),
+    FOREIGN KEY (book_id) REFERENCES Books(book_id)
+);
+
+
+CREATE TABLE Reservations (
+    reservation_id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT,
+    book_id INT,
+    reservation_date DATE,
+    status ENUM('active', 'fulfilled'),
+    FOREIGN KEY (user_id) REFERENCES Users(user_id),
+    FOREIGN KEY (book_id) REFERENCES Books(book_id)
+);
+
+CREATE TABLE Transactions (
+    transaction_id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT,
+    type ENUM('checkout', 'return', 'reservation'),
+    item_id INT, -- Either book_id or reservation_id depending on the type
+    transaction_date DATETIME,
+    FOREIGN KEY (user_id) REFERENCES Users(user_id)
+);
+
+
+CREATE TABLE Fines (
+    fine_id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT,
+    amount DECIMAL(10, 2), -- Assuming amount is in a currency format
+    reason TEXT,
+    status ENUM('paid', 'unpaid'),
+    fine_date DATE,
+    FOREIGN KEY (user_id) REFERENCES Users(user_id)
+);
+
+
+CREATE TABLE Authors (
+    author_id INT PRIMARY KEY AUTO_INCREMENT,
+    author_name VARCHAR(255)
+);
+
+
+CREATE TABLE Genres (
+    genre_id INT PRIMARY KEY AUTO_INCREMENT,
+    genre_name VARCHAR(100)
+);
+

@@ -1,0 +1,34 @@
+/* ListBook.css */
+
+.list-book-page {
+    background: linear-gradient(to right, #b9a0d0, #8bcaba); /* Colorful gradient background */
+    min-height: 100vh; /* Full viewport height */
+    padding: 1rem; /* Padding for spacing */
+    box-sizing: border-box; /* Include padding in height calculations */
+}
+
+.content {
+    background: #ffffff; /* White background for content area */
+    border-radius: 10px; /* Rounded corners for the content area */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow effect for depth */
+}
+
+.table {
+    background-color: #f8f9fa; /* Light background for the table */
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f2f2f2; /* Striped rows */
+}
+
+.table-bordered {
+    border: 1px solid #dee2e6; /* Table border color */
+}
+
+.table-hover tbody tr:hover {
+    background-color: #e9ecef; /* Highlight row on hover */
+}
+
+.header h1 {
+    color: #007bff; /* Color for the header title */
+}

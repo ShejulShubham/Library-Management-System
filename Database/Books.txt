@@ -1,0 +1,37 @@
+{
+  "title": "Head First Design Patterns",
+  "quantityAvailable": 5,
+  "description": "Head First description",
+  "categoryId": 0,
+  "categoryName": "education",
+  "authorId": 0,
+  "authorName": "string",
+  "bookImagePath": "string"
+}
+
+{
+  "title": "1984",
+  "quantityAvailable": 10,
+  "description": "Head First description",
+  "categoryId": 0,
+  "categoryName": "fiction",
+  "authorId": 0,
+  "authorName": "string",
+  "bookImagePath": "string"
+}
+
+
+{
+  "title": "1984",
+  "quantityAvailable": 10,
+  "description": "Head First description",
+  "categoryId": 0,
+  "categoryName": "fiction",
+  "authorId": 0,
+  "authorName": "string",
+  "bookImagePath": "string"
+}
+
+
+
+

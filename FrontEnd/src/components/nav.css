@@ -1,0 +1,26 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensures that the page content takes up the full height */
+}
+
+main {
+    flex: 1;
+}
+
+footer {
+    text-align: center;
+    color: rgb(86, 86, 86);
+    padding: 0.5rem;
+    background-color: rgb(202, 199, 199);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    margin: 0; /* Ensure there is no margin on the footer */
+}

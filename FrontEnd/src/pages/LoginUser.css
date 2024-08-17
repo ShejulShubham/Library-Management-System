@@ -1,0 +1,39 @@
+/* LoginUser.css */
+
+.login-page {
+  background: linear-gradient(to right, #b9a0d0, #8bcaba); /* Gradient from purple to green */
+  color: #862828; /* White text color */
+  min-height: 100vh; /* Ensure the background covers the full viewport height */
+  display: flex;
+  
+}
+
+.card {
+  background-color: #b5c5c5; /* Card background color */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary {
+  background-color: #dddde8; /* Button background color */
+  border-color: #161727;
+  color: #150425; /* Button text color */
+}
+
+.btn-primary:hover {
+  background-color: #952828; /* Button hover background color */
+  border-color: #650505; /* Button hover border color */
+  color: #8a2be2; /* Button hover text color */
+}
+
+.forgot-password-link {
+  margin-top: 10px;
+  display: block;
+  text-align: right;
+  font-size: 14px;
+  color: #593333; /* Dark red link color */
+}
+
+.text-center {
+  text-align: center;
+}
+

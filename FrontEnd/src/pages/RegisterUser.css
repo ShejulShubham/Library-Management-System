@@ -1,0 +1,40 @@
+.register-page {
+  background: linear-gradient(to right, #b9a0d0, #8bcaba); /* Gradient from purple to green */
+  color: #180404; /* Text color */
+  min-height: 100vh; /* Ensure the background covers the full viewport height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  background-color: #ffffff; /* White background for the card */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding-bottom: 20px;
+}
+
+.btn-primary:hover {
+  background-color: #952828; /* Lighter shade on hover */
+  border-color: #650505;
+  color: #06010a; /* Dark text color on hover */
+}
+
+.info-text {
+  font-size: 14px;
+  margin-top: 20px; /* Add some margin between the block and info */
+  color: #5e5e5e; /* Muted text color */
+}
+
+/* Ensure that the container is aligned centrally */
+/* .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+
+/* Additional responsive adjustments */
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
+  }
+}

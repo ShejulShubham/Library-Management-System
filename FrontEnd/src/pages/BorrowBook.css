@@ -1,0 +1,60 @@
+/* BorrowBook.css */
+
+.borrow-book-page {
+  background: linear-gradient(to right, #b9a0d0, #8bcaba); /* Adjust colors as needed */
+  min-height: 100vh; /* Full viewport height */
+  padding: 1rem; /* Padding for some spacing */
+  box-sizing: border-box; /* Include padding in height */
+}
+
+.borrow-book-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.d-flex {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem; /* Space between items */
+}
+
+.flex-item {
+  flex: 1;
+}
+
+.border {
+  border: 1px solid #ddd;
+}
+
+.rounded {
+  border-radius: 5px;
+}
+
+.bg-light {
+  background-color: #f8f9fa;
+}
+
+.shadow-lg {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.ml-4 {
+  margin-left: 1.5rem; /* Space between flex items */
+}
+
+.text-primary {
+  color: #040405;
+}
+
+.text-success {
+  color: #28a745;
+}
+
+.text-info {
+  color: #17a2b8;
+}
+
+.text-warning {
+  color: #ffc107;
+}
