@@ -2,26 +2,25 @@ import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { getBook } from '../service/bookService';
 import { borrowBook } from '../service/borrowService';
-import './BorrowBook.css'; // Import custom CSS file
+import '../css/BorrowBook.css'; // Import custom CSS file
 
 function BorrowBook() {
   document.title = "BORROW BOOK";
 
   const [bookId, setBookId] = useState('');
-  const [userId, setUserId] = useState(localStorage['userId']);
+  const userId = localStorage['userId'];
   const [borrowDate, setBorrowDate] = useState('');
   const [dueDate, setDueDate] = useState('');
-  const [status, setStatus] = useState('BORROWED');
+  const status = 'BORROWED';
   const [bookName, setBookName] = useState('');
   const [author, setAuthor] = useState('');
   const [quantity, setQuantity] = useState('');
-  const [userName, setUserName] = useState('');
 
-  useEffect(() => {
-    // Set initial borrow date to today
-    const currentDate = new Date().toJSON().slice(0, 10);
-    setBorrowDate(currentDate);
-  }, []);
+  // useEffect(() => {
+  //   // Set initial borrow date to today
+  //   const currentDate = new Date().toJSON().slice(0, 10);
+  //   setBorrowDate(currentDate);
+  // });
 
   useEffect(() => {
     if (borrowDate) {

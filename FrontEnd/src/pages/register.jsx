@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './RegisterUser.css';
+import '../css/RegisterUser.css';
 import { signup } from '../service/userService';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';

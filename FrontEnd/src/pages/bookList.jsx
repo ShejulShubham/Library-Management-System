@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { getAllBooks } from '../service/bookService';
 import BookList from '../components/book';
 import { toast } from 'react-toastify';
-import './BookList.css'; // Import custom CSS file for this page
+import '../css/BookList.css'; 
 
 function ListBook () {
     document.title = "MANAGE BOOKS";
 
     useEffect(() => {
         loadBooks();
-    }, []);
+    });
 
     function handleError(error) {
         if (error.response) {

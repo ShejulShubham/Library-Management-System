@@ -1,7 +1,7 @@
 import logo from '../images/LMS_logo.jpg';
 // import '../App.css';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import './nav.css';
+import '../css/nav.css'
 import { useDispatch } from 'react-redux';
 import { logoutAction } from '../features/userSlice';
 
@@ -168,7 +168,7 @@ export const NavbarAfterLogIn = () =>{
           <li className="nav-item dropdown">
             <a
               className="nav-link dropdown-toggle"
-              href="#"
+              href="javascript:void(0)"
               id="navbarDropdown"
               role="button"
               data-bs-toggle="dropdown"
@@ -278,6 +278,7 @@ const AdminNavBar = () => {
     localStorage.removeItem('role')
 
 
+
     // set the login status to false
     dispatch(logoutAction())
 
@@ -313,7 +314,7 @@ const AdminNavBar = () => {
           <li className="nav-item dropdown">
             <a
               className="nav-link dropdown-toggle"
-              href="#"
+              href="javascript:void(0)"
               id="navbarDropdown"
               role="button"
               data-bs-toggle="dropdown"

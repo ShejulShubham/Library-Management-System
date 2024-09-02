@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './about.css'; // Import a CSS file for custom styles
+import '../css/about.css'; // Import a CSS file for custom styles
 
 function AboutPage() {
   return (

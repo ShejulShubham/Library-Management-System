@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux'
-import './LoginUser.css'; // Ensure this matches the correct path to your CSS file
+import '../css/LoginUser.css'; // Ensure this matches the correct path to your CSS file
 import { signin } from "../service/userService";
 import { toast } from 'react-toastify'
 import { loginAction } from '../features/userSlice'
