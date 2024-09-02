@@ -36,14 +36,7 @@ function App() {
         <Route path='/return' element={<ReturnBook/>}/>
         <Route path='/about' element={<AboutPage />} />
         <Route path='/manageuser' element={<ManageUsers />} />
-        <Route
-                    path='/manageBook'
-                    element={
-                        
-                            <ManageBooks />
-                        
-                    }
-                />
+        <Route path='/manageBook' element={<ManageBooks />}/>
         <Route path='/viewrecords' element={<ViewRecords />} />
         <Route path='/defaulter' element={<DefaulterList/>}/>
         <Route path='/borrow' element={<BorrowBook/>}/>

@@ -13,8 +13,6 @@ function LoginUser() {
     // create state members
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    // Add a state for role
-const [role, setRole] = useState(''); // Default to user role
 
     // get the navigate object
     const navigate = useNavigate()
@@ -57,13 +55,13 @@ const [role, setRole] = useState(''); // Default to user role
         toast.success(`${firstName} ${lastName},
         Welcome to the Discovery LMS!`)
 
-        toast.success("Click on More to explore options")
-      
+        
         if(role === 'ROLE_ADMIN')
           navigate('/dashboard')
         else// navigate to home
-          navigate('/home')
-        
+        { navigate('/home')
+          toast.success("Click on More to explore options")
+        }
       }
     })
     .catch(error => {
@@ -82,25 +80,6 @@ const [role, setRole] = useState(''); // Default to user role
             console.log("Error Message:", error.message);
         }
     });
-
-      // sample response
-      // {
-      //   "id": 5,
-      //   "firstName": "raj",
-      //   "lastName": "saytode",
-      //   "email": "raj@gmail.com",
-      //   "role": "ROLE_USER",
-      //   "status": "success"
-      // }
-
-      // console.log(JSON.stringify(result))
-
-      
-
-      // }else {
-      //   toast.error(result['message'])
-      //   navigate('/login')
-      // }
     }
 
   }
@@ -135,21 +114,6 @@ const [role, setRole] = useState(''); // Default to user role
                 required
               />
             </div>
-           
-{/* <div className="form-group mb-3">
-  <label htmlFor="role" className="form-label">Role</label>
-  <select
-    className="form-control"
-    id="role"
-    name="role"
-    value={role}
-    onChange={(e) => setRole(e.target.value)}
-    required
-  >
-    <option value="ROLE_USER">User</option>
-    <option value="ROLE_ADMIN">Admin</option>
-  </select>
-</div> */}
             <div className="form-check mb-3">
               <input type="checkbox" className="form-check-input" id="rememberMe" />
               <label className="form-check-label" htmlFor="rememberMe">Remember Me</label>

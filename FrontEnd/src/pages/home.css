@@ -64,6 +64,7 @@
   .book-list {
     display: flex;
     flex-wrap: wrap;
+    /* overflow-x: auto; */
   }
   
   .book-item {
