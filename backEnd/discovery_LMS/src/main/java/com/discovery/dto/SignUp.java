@@ -3,7 +3,7 @@ package com.discovery.dto;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
-import com.discovery.entities.UserRole;
+import com.discovery.entities.Role;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
@@ -35,7 +35,7 @@ public class SignUp {
 	private String password;
 	
 	
-	private UserRole role;
+	private Role role;
 	
 public SignUp(String firstName, String lastName,
 		String email, String password) {

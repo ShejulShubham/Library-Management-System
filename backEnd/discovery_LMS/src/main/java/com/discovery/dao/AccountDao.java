@@ -5,12 +5,13 @@ import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import com.discovery.entities.Account;
 import com.discovery.entities.User_Account;
 
-public interface UserDao  extends JpaRepository<User_Account,Long> {
+public interface AccountDao  extends JpaRepository<Account,Long> {
 
 	
-	Optional<User_Account> findByEmailAndPassword(String email,String pass);
+	Optional<Account> findByEmailAndPassword(String email,String pass);
 	
 	boolean existsByEmail(String email);
 	

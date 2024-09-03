@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.discovery.custom_exceptions.ApiException;
 import com.discovery.custom_exceptions.AuthenticationException;
 import com.discovery.custom_exceptions.ResourceNotFoundException;
+import com.discovery.dao.AccountDao;
 import com.discovery.dao.BorrowDao;
 import com.discovery.dao.UserDao;
 import com.discovery.dto.ApiResponse;
@@ -19,9 +20,10 @@ import com.discovery.dto.SignUp;
 import com.discovery.dto.UpdateUser;
 import com.discovery.dto.UserDetailsDTO;
 import com.discovery.dto.GetAllUserDetailsDTO;
-import com.discovery.entities.User;
+import com.discovery.entities.User_Account;
 import com.discovery.entities.UserDeleteStatus;
-import com.discovery.entities.UserRole;
+import com.discovery.entities.Account;
+import com.discovery.entities.Role;
 
 @Service
 @Transactional
@@ -32,6 +34,9 @@ public class UserServiceImpl {
 	
 	@Autowired
 	private BorrowDao borrowDao;
+	
+	@Autowired
+	private AccountDao accountDao;
 		
 	@Autowired
 	private ModelMapper mapper;
@@ -39,11 +44,11 @@ public class UserServiceImpl {
 	
 	public List<GetAllUserDetailsDTO> getAllUsers(){
 			
-		List<User> newList = userDao.findAll();
+		List<User_Account> newList = userDao.findAll();
 			
 		List<GetAllUserDetailsDTO> list = new ArrayList<>();
 			
-		for(User u : newList) {
+		for(User_Account u : newList) {
 //			String book;
 //			BorrowStatus status;
 //			if(borrowDao.existsByUser(u)) {
@@ -56,14 +61,11 @@ public class UserServiceImpl {
 //				book = "";
 //				status = BorrowStatus.NOTHING; 
 //			}	
-			if(u.getRole() == UserRole.ROLE_ADMIN) {
-				
-			}else {
 			GetAllUserDetailsDTO dto = new GetAllUserDetailsDTO(
 					u.getId(), u.getFirstName()+" "+ u.getLastName(), u.getEmail()
 					, "success");
 			
-			list.add(dto);}
+			list.add(dto);
 			
 		}
 		
@@ -73,23 +75,39 @@ public class UserServiceImpl {
 
 	public UserDetailsDTO authenticateUser(SignInRequest dto) {
 		// 1.invoke dao 's method
-		User user = userDao.findByEmailAndPassword(
+		Account user = accountDao.findByEmailAndPassword(
 					dto.getEmail(), dto.getPassword())
 					.orElseThrow(() -> 
 					new AuthenticationException("Invalid Email or Password !!!!!!"));
 		
-		if(user.getIsDeleted() == UserDeleteStatus.YES) {
-			throw new ApiException("User is deleted");
+		UserDetailsDTO userDetails = null;
+		
+		if(user.getRole() == Role.ROLE_ADMIN) {
+			userDetails = mapper.map(user, UserDetailsDTO.class);
+			
+		}
+
+		if(user.getRole() == Role.ROLE_USER) {
+			
+			User_Account u = (User_Account)user;
+			
+			if(u.getIsDeleted() == UserDeleteStatus.YES) {
+				throw new ApiException("User is deleted");
+			}
+
+			//valid login -user : persistent -> entity -> dto
+			userDetails = mapper.map(u, UserDetailsDTO.class);
+			userDetails.setStatus("success");
+			
 		}
 		
-		//valid login -user : persistent -> entity -> dto
-			UserDetailsDTO userDetails = mapper.map(user, UserDetailsDTO.class);
-			userDetails.setStatus("success");
-			return userDetails;
+		return userDetails;
+		
+		
 	}
 	
 	public UserDetailsDTO getUserDetails(Long id) {
-		User user = userDao.findById(id)
+		User_Account user = userDao.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Invalid user id !!!!"));
 		
 		UserDetailsDTO dto = new UserDetailsDTO(user.getId(), user.getFirstName(), user.getLastName());
@@ -103,13 +121,12 @@ public class UserServiceImpl {
 			throw new ApiException("Email Already Exist !!!");
 		
 		
-		User user = mapper.map(dto, User.class);
+		User_Account user = mapper.map(dto, User_Account.class);
 		
-		user.setRole(UserRole.ROLE_USER);
 		
 //		user.setRole(UserRole.ROLE_ADMIN);
 		
-		User persistentUser = userDao.save(user);
+		User_Account persistentUser = userDao.save(user);
 		
 		return new ApiResponse("New User added with ID=" + persistentUser.getId(), "success");
 	}
@@ -117,7 +134,7 @@ public class UserServiceImpl {
 	
 	public UpdateUser updateUser(UpdateUser dto) {
 		//validate user
-		User persistentUser = userDao.findById(dto.getId())
+		User_Account persistentUser = userDao.findById(dto.getId())
 				.orElseThrow(() -> new ResourceNotFoundException("Invalid User id"));
 		//user exist 
 		//dto updates should apply to the persistent user
@@ -131,11 +148,8 @@ public class UserServiceImpl {
 	
 	public ApiResponse deleteUser (Long id) {
 		
-		User user = userDao.findById(id).
+		User_Account user = userDao.findById(id).
 				orElseThrow(() -> new ResourceNotFoundException("Invalid User id"));
-		if(user.getRole() == UserRole.ROLE_ADMIN) {
-			throw new ApiException("Admin cannot be deleted");
-		}
 		
 		
 		if(user.getIsDeleted() == UserDeleteStatus.YES) {

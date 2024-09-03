@@ -9,22 +9,22 @@ import org.springframework.data.jpa.repository.Query;
 import com.discovery.entities.Author;
 import com.discovery.entities.Book;
 import com.discovery.entities.Borrow;
-import com.discovery.entities.User;
+import com.discovery.entities.User_Account;
 
 public interface BorrowDao extends JpaRepository<Borrow,Long> {
 	
-	boolean existsByUser(User user);
+	boolean existsByUser(User_Account user);
 	
 //	boolean existsByAuthorName(String authorName);
 	
 //	Optional<Author> findByAuthorName(String authorName);
 	
-	List<Borrow> findByUser(User user);
+	List<Borrow> findByUser(User_Account user);
 	
 	@Query("SELECT b FROM Borrow b LEFT JOIN FETCH b.user u WHERE b.status = :status")
 	Optional <Borrow> findUserDetails(String status);
 	
-	List<Borrow> findByUserAndBook(User user, Book book);
+	List<Borrow> findByUserAndBook(User_Account user, Book book);
 	
 	@Query("SELECT COUNT(b) FROM Borrow b WHERE b.status = 'BORROWED'" )
 	Long countByBorrowed();

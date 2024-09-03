@@ -31,9 +31,9 @@ import com.discovery.entities.Borrow;
 import com.discovery.entities.BorrowStatus;
 import com.discovery.entities.Category;
 import com.discovery.entities.Fine;
-import com.discovery.entities.User;
+import com.discovery.entities.User_Account;
 import com.discovery.entities.UserDeleteStatus;
-import com.discovery.entities.UserRole;
+import com.discovery.entities.Role;
 
 @Service
 @Transactional
@@ -66,19 +66,16 @@ public class BorrowServiceImpl {
 		Long bookCount = bookDao.count();
 		Long defaulterCount = borrowDao.findDefaultersList().stream().count();
 		
-		List<User> uList = userDao.findAll();
+		List<User_Account> uList = userDao.findAll();
 		
 		List<Book> bList = bookDao.findAll();
 		
 		List<UserDetailsDTO> users = new ArrayList<>();
-		for(User u: uList) {
-			if(u.getRole() == UserRole.ROLE_ADMIN) {
-				
-				}else {
+		for(User_Account u: uList) {
 			UserDetailsDTO uDto = new UserDetailsDTO(u.getFirstName()+" "+u.getLastName(), u.getId(),
 					u.getEmail());
 			
-			users.add(uDto);}
+			users.add(uDto);
 		}
 		
 		
@@ -113,7 +110,7 @@ public class BorrowServiceImpl {
 	
 	public BorrowDetailsDTO getBorrowDetailByUserIdAndBookId(Long userId) {
 
-		User user = userDao.findById(userId)
+		User_Account user = userDao.findById(userId)
 					.orElseThrow(() -> new ResourceNotFoundException("Invalid user id !!!!"));
 					
 		List<Borrow> borrowList = borrowDao.findByUser(user);
@@ -153,7 +150,7 @@ public class BorrowServiceImpl {
 					.orElseThrow(() -> new ResourceNotFoundException("Invalid book id !!!!"));
 		
 		// 2. get User from it's id
-			User user = userDao.findById(dto.getUserId())
+			User_Account user = userDao.findById(dto.getUserId())
 					.orElseThrow(() -> new ResourceNotFoundException("Invalid user id !!!!"));
 			
 //		//2.1 throw exception if user is deleted
@@ -238,7 +235,7 @@ public ApiResponse returnBook(Long uId, Long bId) {
 		Book book = bookDao.findById(bId)
 				.orElseThrow(() -> new ResourceNotFoundException("Invalid Book id !!!!"));
 		
-		User user = userDao.findById(uId)
+		User_Account user = userDao.findById(uId)
 				.orElseThrow(() -> new ResourceNotFoundException("Invalid User id !!!!"));
 		
 		List<Borrow> newList = borrowDao.findByUserAndBook(user, book);

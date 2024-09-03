@@ -11,8 +11,6 @@ import javax.persistence.MappedSuperclass;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import lombok.Getter;
-import lombok.Setter;
 
 @MappedSuperclass // to tell hib , not to create any tables n other entities will extend from it
 public class BaseEntity {

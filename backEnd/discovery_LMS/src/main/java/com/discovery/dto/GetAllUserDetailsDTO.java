@@ -1,7 +1,7 @@
 package com.discovery.dto;
 
 import com.discovery.entities.BorrowStatus;
-import com.discovery.entities.UserRole;
+import com.discovery.entities.Role;
 
 import lombok.*;
 
@@ -21,7 +21,7 @@ public class GetAllUserDetailsDTO {
 
 	private String email;
 	
-	private UserRole role;
+	private Role role;
 	
 	private String book;
 	

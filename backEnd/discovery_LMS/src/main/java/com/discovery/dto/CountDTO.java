@@ -9,7 +9,7 @@ import javax.validation.constraints.NotBlank;
 
 import com.discovery.entities.Book;
 import com.discovery.entities.BorrowStatus;
-import com.discovery.entities.User;
+import com.discovery.entities.User_Account;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

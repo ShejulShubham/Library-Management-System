@@ -34,7 +34,6 @@ function LoginUser() {
       // get user details from email and password
       await signin(email, password)
       .then(response => {
-        if(response['status'] === 'success'){
 
           const id = response['id']
           const firstName = response['firstName']
@@ -53,7 +52,7 @@ function LoginUser() {
           
         // show message
         toast.success(`${firstName} ${lastName},
-        Welcome to the Discovery LMS!`)
+          Welcome to the Discovery LMS!`)
 
         
         if(role === 'ROLE_ADMIN')
@@ -62,7 +61,6 @@ function LoginUser() {
         { navigate('/home')
           toast.success("Click on More to explore options")
         }
-      }
     })
     .catch(error => {
         if (error.response) {

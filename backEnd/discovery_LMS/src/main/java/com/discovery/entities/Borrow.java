@@ -33,7 +33,7 @@ public class Borrow  extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
-    private User user;
+    private User_Account user;
     
    
     private LocalDate borrowDate;

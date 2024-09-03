@@ -168,7 +168,7 @@ export const NavbarAfterLogIn = () =>{
           <li className="nav-item dropdown">
             <a
               className="nav-link dropdown-toggle"
-              href="javascript:void(0)"
+              href="#"
               id="navbarDropdown"
               role="button"
               data-bs-toggle="dropdown"
@@ -271,11 +271,7 @@ const AdminNavBar = () => {
 
   const onLogout = () => {
     // clear the local storage
-    localStorage.removeItem('userId')
-    localStorage.removeItem('firstName')
-    localStorage.removeItem('lastName')
-    localStorage.removeItem('email')
-    localStorage.removeItem('role')
+    localStorage.clear();
 
 
 
@@ -314,7 +310,7 @@ const AdminNavBar = () => {
           <li className="nav-item dropdown">
             <a
               className="nav-link dropdown-toggle"
-              href="javascript:void(0)"
+              href="#"
               id="navbarDropdown"
               role="button"
               data-bs-toggle="dropdown"

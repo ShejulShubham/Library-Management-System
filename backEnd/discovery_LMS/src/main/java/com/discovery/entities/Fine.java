@@ -29,7 +29,7 @@ public class Fine extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
-    private User user;
+    private User_Account user;
     
     @Column(name = "fine_amount", nullable = false)
     private double fineAmount;

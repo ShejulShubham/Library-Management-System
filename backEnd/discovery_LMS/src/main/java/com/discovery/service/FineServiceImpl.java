@@ -19,7 +19,7 @@ import com.discovery.dao.FineDao;
 import com.discovery.dto.FineDTO;
 import com.discovery.entities.Borrow;
 import com.discovery.entities.Fine;
-import com.discovery.entities.User;
+import com.discovery.entities.User_Account;
 
 
 @Service
