@@ -1,2 +1,4 @@
 deploy.sh
 docker-compose.yml
+install_software.sh
+main.sh
